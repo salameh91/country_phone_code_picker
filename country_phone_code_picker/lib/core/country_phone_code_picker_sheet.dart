@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:country_phone_code_picker/constants/country_flag_image.dart';
-import 'package:country_phone_code_picker/controller/search_controller.dart';
+import 'package:country_phone_code_picker/controller/search_controller.dart' as searchCon;
 import 'package:country_phone_code_picker/controller/country_controller.dart';
 
 // ignore: must_be_immutable
@@ -116,7 +116,7 @@ class CountryPhoneCodePickerModalSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     searchBarInput = TextEditingController(text: searchBarInitialValue);
-    SearchController searchController = Get.put(SearchController());
+    searchCon.SearchController searchController = Get.put(searchCon.SearchController());
     CountryController countryController = getCountryController();
     return Scaffold(
       appBar: AppBar(
@@ -173,7 +173,7 @@ class CountryPhoneCodePickerModalSheet extends StatelessWidget {
               showCursor: showCursor,
             ),
             Expanded(
-              child: GetBuilder<SearchController>(
+              child: GetBuilder<searchCon.SearchController>(
                 builder: (controller) {
                   return ListView.builder(
                     itemCount: controller.filteredCountries.length,
